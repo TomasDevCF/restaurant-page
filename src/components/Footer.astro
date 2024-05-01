@@ -1,0 +1,27 @@
+---
+import Instagram from "../icons/Instagram.astro";
+import Twitter from "../icons/Twitter.astro";
+import Whatsapp from "../icons/Whatsapp.astro";
+---
+
+<footer class="w-full flex flex-col px-20 py-4">
+  <div
+    class="top flex justify-between w-full border-b border-3 border-solid pb-4 border-gray-500"
+  >
+    <div class="left flex flex-col">
+      <a href="/" class="text-5xl text-black rubik">LOGO</a>
+      <div class="social-media flex gap-x-4">
+        <Instagram />
+        <Twitter />
+        <Whatsapp />
+      </div>
+    </div>
+    <div class="right flex items-center gap-x-4">
+      <a class="hover:text-primary" href="/">Politica de privacidad</a>
+      <a class="hover:text-primary" href="/">Terminos y Condiciones</a>
+    </div>
+  </div>
+  <div class="bottom pt-4">
+    <p class="text-center text-xl">© 2024 Restaurante "Los Cabritos". Todos los derechos reservados.</p>
+  </div>
+</footer>
