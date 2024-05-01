@@ -1,7 +1,95 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Location from "../icons/Location.astro";
+import CategoryCard from "../components/CategoryCard.astro";
+import Section from "../components/Section.astro";
+import Reason from "../components/Reason.astro";
+import Happy from "../icons/Happy.astro";
+import QuestionsSection from "../components/QuestionsSection";
 ---
 
 <Layout title="Welcome to Astro." description="TODO" keywords="TODO">
-  <main class="h-screen w-screen clip bg-primary"></main>
+  <main class="min-h-screen w-full flex flex-col justify-center">
+    <section
+      class="w-full flex gap-x-4 px-20 items-center h-full z-40 relative bg-transparent"
+    >
+      <div class="restaurant-info w-1/2 flex flex-col gap-y-2">
+        <p class="text-white flex gap-x-2">
+          <Location /> Raymundo Montenegro 2764, Córdoba
+        </p>
+        <h1 class="text-5xl text-black font-medium">
+          RESTAURANTE "LOS CABRITOS"
+        </h1>
+        <p>
+          En nuestro restaurante cada plato cuenta una historia y cada sabor
+          lleva el alma de la tradición argentina. En un ambiente rustico y
+          acogedor, te invitamos a degustar una selección de platos preparados
+          con los ingredientes más frescos y una pasión que se siente en cada
+          bocado. Desde nuestras hamburguesas caseras hasta el asado más jugoso
+        </p>
+        <nav class="flex gap-x-4">
+          <a
+            href="/reservar"
+            class="text-white border-white border border-solid px-4 py-2 rounded-md hover:bg-white hover:text-primary transition-colors"
+            >Reserva tu mesa</a
+          >
+          <a
+            href="/menu"
+            class="text-white px-4 py-2 rounded-md hover:text-white/80 transition-colors"
+            >Revisa nuestro menu</a
+          >
+        </nav>
+      </div>
+      <div class="w-1/2">
+        <img
+          src="/images/burger.png"
+          alt="Hamburguesa"
+          class="relative z-40 w-[75%] object-cover"
+        />
+      </div>
+    </section>
+    <section class="w-full flex items-center justify-around gap-x-5 px-20">
+      <CategoryCard
+        categoryText="Ver nuestras hamburguesas"
+        image="/images/burger2.jpg"
+      />
+      <CategoryCard
+        categoryText="Ver nuestras pastas"
+        image="/images/pasta.jpg"
+      />
+      <CategoryCard
+        categoryText="Ver nuestros lomitos"
+        image="/images/lomito.webp"
+      />
+    </section>
+    <div class="bg-primary clip w-full h-full absolute top-0 z-20"></div>
+  </main>
+  <Section title="¿Por que elegir nuestro restaurante?">
+    <div class="w-full flex gap-x-4 justify-center">
+      <Reason
+        description=`En "Los Cabritos" no debes preocuparte por la calidad de la comida. Cada plato esta hecho con mucho cuidado para no perjudicarte.`
+        title="Comida de calidad"
+      >
+        <Happy slot="icon" />
+      </Reason>
+      <Reason
+        description=`En "Los Cabritos" no debes preocuparte por la calidad de la comida. Cada plato esta hecho con mucho cuidado para no perjudicarte.`
+        title="Comida de calidad"
+      >
+        <Happy slot="icon" />
+      </Reason>
+      <Reason
+        description=`En "Los Cabritos" no debes preocuparte por la calidad de la comida. Cada plato esta hecho con mucho cuidado para no perjudicarte.`
+        title="Comida de calidad"
+      >
+        <Happy slot="icon" />
+      </Reason>
+    </div>
+  </Section>
+  <Section
+    title="¿Por que elegir nuestro restaurante?"
+    sectionClass="bg-primary"
+  >
+    <QuestionsSection client:load />
+  </Section>
 </Layout>
