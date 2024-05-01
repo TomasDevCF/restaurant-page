@@ -4,11 +4,11 @@ import Twitter from "../icons/Twitter.astro";
 import Whatsapp from "../icons/Whatsapp.astro";
 ---
 
-<footer class="w-full flex flex-col px-20 py-4">
+<footer class="w-full flex flex-col px-10 lg:px-20 py-4">
   <div
-    class="top flex justify-between w-full border-b border-3 border-solid pb-4 border-gray-500"
+    class="top flex justify-between w-full border-b border-3 border-solid pb-4 border-gray-500 md:flex-row flex-col gap-y-4"
   >
-    <div class="left flex flex-col">
+    <div class="left flex flex-col items-center">
       <a href="/" class="text-5xl text-black rubik">LOGO</a>
       <div class="social-media flex gap-x-4">
         <Instagram />
@@ -16,12 +16,18 @@ import Whatsapp from "../icons/Whatsapp.astro";
         <Whatsapp />
       </div>
     </div>
-    <div class="right flex items-center gap-x-4">
-      <a class="hover:text-primary" href="/">Politica de privacidad</a>
-      <a class="hover:text-primary" href="/">Terminos y Condiciones</a>
+    <div class="right flex items-center justify-center gap-x-4">
+      <a class="hover:text-primary text-center" href="/"
+        >Politica de privacidad</a
+      >
+      <a class="hover:text-primary tex-center" href="/"
+        >Terminos y Condiciones</a
+      >
     </div>
   </div>
   <div class="bottom pt-4">
-    <p class="text-center text-xl">© 2024 Restaurante "Los Cabritos". Todos los derechos reservados.</p>
+    <p class="text-center text-xl">
+      © 2024 Restaurante "Los Cabritos". Todos los derechos reservados.
+    </p>
   </div>
 </footer>
