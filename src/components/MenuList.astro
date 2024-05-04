@@ -1,0 +1,37 @@
+---
+import { eq } from "astro:db";
+import { db, Menu } from "astro:db";
+
+interface Props {
+  category_id: string;
+  category_name: string;
+}
+
+const { category_id, category_name } = Astro.props;
+
+const category_menu = await db
+  .select()
+  .from(Menu)
+  .where(eq(Menu.category_id, category_id));
+
+console.log(category_menu);
+---
+
+<div class="flex flex-col w-full">
+  <h2 class="text-3xl font-normal rubik">{category_name}</h2>
+  <ul class="w-full flex flex-col justify-between h-full">
+    {
+      category_menu.map((menu) => (
+        <li class="flex justify-between w-full">
+          <div class="flex flex-col">
+            <p class="text-xl">{menu.name}</p>
+            {menu.ingredientes != "" && (
+              <p class="text-lg text-gray-600">({menu.ingredientes})</p>
+            )}
+          </div>
+          <p class="text-xl font-medium">${menu.price}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>

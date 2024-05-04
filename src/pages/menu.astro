@@ -1,0 +1,25 @@
+---
+import MenuList from "../components/MenuList.astro";
+import Layout from "../layouts/Layout.astro";
+import { db, Categorias } from "astro:db";
+
+const categorias = await db.select().from(Categorias);
+---
+
+<Layout description="TODO" title="TODO" keywords="TODO">
+  <main class="pt-28 pb-12 bg-primary grid place-items-center">
+    <div class="p-4 rounded-md max-w-[1200px] bg-white">
+      <h1 class="text-5xl rubik py-4 text-center">Menu de "Los Cabritos"</h1>
+      <div class="grid grid-cols-2 gap-8 px-8">
+        {
+          categorias.map((categoria) => (
+            <MenuList
+              category_id={categoria.id}
+              category_name={categoria.name}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
