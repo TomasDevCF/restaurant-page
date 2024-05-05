@@ -8,4 +8,7 @@ import db from "@astrojs/db";
 export default defineConfig({
   integrations: [tailwind(), react(), db()],
   output: "server",
+  server: {
+    host: true,
+  },
 });

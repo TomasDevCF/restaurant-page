@@ -9,9 +9,11 @@ import QuestionsSection from "../components/QuestionsSection";
 ---
 
 <Layout title="Welcome to Astro." description="TODO" keywords="TODO">
-  <main class="min-h-screen w-full relative md:bg-transparent bg-primary">
+  <main
+    class="h-svh w-full relative md:bg-transparent bg-primary max-w-[1600px] max-h-[1024px]"
+  >
     <section
-      class="w-full flex gap-x-4 lg:px-20 px-10 items-center min-h-[80vh] pt-[70px] z-40 relative bg-transparent"
+      class="w-full flex gap-x-4 lg:px-20 px-5 items-center h-[85%] pt-[70px] z-40 relative bg-transparent"
     >
       <div class="restaurant-info w-full lg:w-1/2 flex flex-col gap-y-2">
         <p class="md:text-gray-600 flex gap-x-2 text-white">
@@ -49,7 +51,7 @@ import QuestionsSection from "../components/QuestionsSection";
       </div>
     </section>
     <section
-      class="w-full flex items-center justify-around gap-5 px-20 min-[930px]:flex-row flex-col py-4"
+      class="w-full items-center justify-around gap-5 px-20 min-[930px]:flex hidden py-4"
     >
       <CategoryCard
         categoryText="Ver nuestras entradas"
@@ -69,7 +71,7 @@ import QuestionsSection from "../components/QuestionsSection";
     >
     </div>
   </main>
-  <Section title="¿Por que elegir nuestro restaurante?">
+  <Section title="¿Por que elegir nuestro restaurante?" sectionClass="bg-white">
     <div
       class="w-full grid md:grid-cols-3 grid-cols-1 gap-4 my-0 lg:px-1/4 place-items-center"
     >

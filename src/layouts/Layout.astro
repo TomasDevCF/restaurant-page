@@ -13,7 +13,7 @@ const { title, description, keywords } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="bg-primary">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -30,23 +30,31 @@ const { title, description, keywords } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body>
+  <body class="grid place-items-center w-full">
     <Header />
     <slot />
     <Footer />
+    <style is:global>
+      html {
+        font-family: "Poppins", sans-serif;
+        background: white;
+      }
+
+      .rubik {
+        font-family: "Rubik", sans-serif;
+      }
+
+      body > * {
+        max-width: 1600px;
+      }
+
+      body > header, body > footer {
+        max-width: none !important;
+      }
+
+      .clip {
+        clip-path: polygon(0% 0%, 15.4% 0%, 100.1% 100.3%, 0% 100.3%);
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: "Poppins", sans-serif;
-    background: white;
-  }
-
-  .rubik {
-    font-family: "Rubik", sans-serif;
-  }
-
-  .clip {
-    clip-path: polygon(0% 0%, 15.4% 0%, 100.1% 100.3%, 0% 100.3%);
-  }
-</style>

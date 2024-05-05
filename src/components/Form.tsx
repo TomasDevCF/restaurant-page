@@ -4,6 +4,7 @@ import RadioCard from "./RadioCard";
 export default function Form() {
 
   const [message, setMessage] = useState<null | string>(null)
+  const [now, setNow] = useState(getDate())
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -16,12 +17,18 @@ export default function Form() {
       .catch(err => console.error(err))
   }
 
+  function getDate() {
+    const date = new Date()
+    date.setDate(date.getDate() + 1)
+    return date.toISOString().split("T")[0]
+  }
+
   return (
-    <form className="w-full min-h-screen gap-8 flex flex-col relative z-40 items-center justify-center" onSubmit={handleSubmit}>
-      <div className="min-w-[700px] shadow-2xl bg-white rounded-md p-4">
+    <form className="w-full min-h-[600px] gap-8 flex flex-col relative z-40 items-center justify-center" onSubmit={handleSubmit}>
+      <div className="w-full max-w-[700px] shadow-2xl bg-white md:rounded-md p-4">
         <h1 className="text-4xl pb-8 rubik">Reserva tu mesa</h1>
         <h2 className="pb-2 text-lg">Numero de personas</h2>
-        <div className="px-4 grid grid-cols-5 gap-x-4">
+        <div className="sm:px-4 grid grid-cols-5 gap-x-2 sm:gap-x-4">
           <RadioCard title="1" />
           <RadioCard title="2" />
           <RadioCard title="3" />
@@ -61,7 +68,7 @@ export default function Form() {
         </select>
         <h2 className="text-lg pb-2 pt-6">Fecha de reserva</h2>
 
-        <input required type="date" min={new Date().toISOString().split('T')[0]} name="day" id="day" className="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5" />
+        <input required type="date" min={now} name="day" id="day" className="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5" />
 
         <button type="submit" className="text-white bg-primary hover:bg-primary/80 focus:ring-4 focus:outline-none focus:ring-primary/80 font-medium rounded-lg px-5 py-2.5 text-center mt-6 text-md">Reservar ahora</button>
         {message && <p className="text-green-500 pt-2">{message}</p>}
