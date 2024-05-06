@@ -1,0 +1,9 @@
+---
+const isLogged = Astro.cookies.has("isLogged");
+
+if (!isLogged) {
+  return Astro.redirect("/admin/login");
+}
+
+import Layout from "../../layouts/Layout.astro";
+---

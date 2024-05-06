@@ -6,11 +6,13 @@ import Section from "../components/Section.astro";
 import Reason from "../components/Reason.astro";
 import Happy from "../icons/Happy.astro";
 import QuestionsSection from "../components/QuestionsSection";
+import Home from "../icons/Home.astro";
+import Star from "../icons/Star.astro";
 ---
 
 <Layout title="Welcome to Astro." description="TODO" keywords="TODO">
   <main
-    class="h-svh w-full relative md:bg-transparent bg-primary max-w-[1600px] max-h-[1024px]"
+    class="h-svh w-full relative bg-transparent md:bg-white max-w-[1600px] max-h-[1024px]"
   >
     <section
       class="w-full flex gap-x-4 lg:px-20 px-5 items-center h-[85%] pt-[70px] z-40 relative bg-transparent"
@@ -55,15 +57,18 @@ import QuestionsSection from "../components/QuestionsSection";
     >
       <CategoryCard
         categoryText="Ver nuestras entradas"
-        image="/images/burger2.jpg"
+        image="/images/empanadas.jpg"
+        href="/menu#Entradas"
       />
       <CategoryCard
         categoryText="Ver nuestras carnes"
-        image="/images/pasta.jpg"
+        image="/images/parrillada.webp"
+        href="/menu#Carnes de la parrilla"
       />
       <CategoryCard
         categoryText="Ver nuestros ensaladas"
-        image="/images/lomito.webp"
+        image="/images/ensalada-mediterranea.jpg"
+        href="/menu#Ensaladas"
       />
     </section>
     <div
@@ -76,22 +81,22 @@ import QuestionsSection from "../components/QuestionsSection";
       class="w-full grid md:grid-cols-3 grid-cols-1 gap-4 my-0 lg:px-1/4 place-items-center"
     >
       <Reason
-        description=`En "Los Cabritos" no debes preocuparte por la calidad de la comida. Cada plato esta hecho con mucho cuidado para no perjudicarte.`
-        title="Comida de calidad"
+        description=`Nuestro equipo de chefs y personal de servicio trabajan incansablemente para superar tus expectativas y asegurar que cada visita sea perfecta.`
+        title="Compromiso con la Excelencia"
       >
         <Happy slot="icon" />
+      </Reason>
+      <Reason
+        description=`Nuestro restaurante ofrece un espacio acogedor y relajante, ideal para reuniones familiares, citas románticas o comidas con amigos.`
+        title="Ambiente Acogedor y Familiar"
+      >
+        <Home slot="icon" />
       </Reason>
       <Reason
         description=`En "Los Cabritos" no debes preocuparte por la calidad de la comida. Cada plato esta hecho con mucho cuidado para no perjudicarte.`
         title="Comida de calidad"
       >
-        <Happy slot="icon" />
-      </Reason>
-      <Reason
-        description=`En "Los Cabritos" no debes preocuparte por la calidad de la comida. Cada plato esta hecho con mucho cuidado para no perjudicarte.`
-        title="Comida de calidad"
-      >
-        <Happy slot="icon" />
+        <Star slot="icon" />
       </Reason>
     </div>
   </Section>

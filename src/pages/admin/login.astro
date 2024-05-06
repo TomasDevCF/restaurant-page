@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const isLogged = Astro.cookies.has("isLogged");
+
+if (isLogged) {
+  return Astro.redirect("/admin/home");
+}
+
+if (Astro.request.method === "POST") {
+  try {
+    const formData = await Astro.request.formData();
+    const userCode = formData.get("code") as string;
+    const envCode = import.meta.env.LOGIN_FORM_CODE as string;
+    if (userCode == envCode) {
+      Astro.cookies.set("isLogged", "true", {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 30,
+      });
+      return Astro.redirect("/admin/home");
+    } else {
+      console.log("No es igual");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+---
+
+<Layout title="Welcome to Astro." description="TODO" keywords="TODO">
+  <main
+    class="w-full flex justify-center items-center py-24 h-svh min-h-[680px] relative md:bg-transparent bg-primary"
+  >
+    <form
+      class="w-full min-h-[600px] gap-8 flex flex-col relative z-40 items-center justify-center"
+      method="POST"
+    >
+      <div class="w-full max-w-[700px] shadow-2xl bg-white md:rounded-md p-4">
+        <h1 class="text-5xl">Ingrese el codigo</h1>
+        <label for="code">Ingrese el codigo para entrar</label>
+        <input
+          type="text"
+          placeholder="Codigo"
+          name="code"
+          class="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5"
+        />
+      </div>
+    </form>
+    <div
+      class="bg-primary clip w-full h-full absolute top-0 z-20 md:block hidden"
+    >
+    </div>
+  </main>
+</Layout>
