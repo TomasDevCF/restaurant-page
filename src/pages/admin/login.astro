@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 const isLogged = Astro.cookies.has("isLogged");
 
 if (isLogged) {
-  return Astro.redirect("/admin/home");
+  return Astro.redirect("/admin/admin-reserves");
 }
 
 if (Astro.request.method === "POST") {
@@ -17,7 +17,7 @@ if (Astro.request.method === "POST") {
         path: "/",
         maxAge: 60 * 60 * 24 * 30,
       });
-      return Astro.redirect("/admin/home");
+      return Astro.redirect("/admin/admin-reserves");
     } else {
       console.log("No es igual");
     }
@@ -35,8 +35,10 @@ if (Astro.request.method === "POST") {
       class="w-full min-h-[600px] gap-8 flex flex-col relative z-40 items-center justify-center"
       method="POST"
     >
-      <div class="w-full max-w-[700px] shadow-2xl bg-white md:rounded-md p-4">
-        <h1 class="text-5xl">Ingrese el codigo</h1>
+      <div
+        class="w-full max-w-[500px] shadow-2xl bg-white md:rounded-md p-4 gap-y-8"
+      >
+        <h1 class="text-5xl rubik">Ingrese el codigo</h1>
         <label for="code">Ingrese el codigo para entrar</label>
         <input
           type="text"

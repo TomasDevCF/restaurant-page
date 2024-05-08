@@ -1,0 +1,47 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  header: string;
+  title: string;
+  description: string;
+  keywords: string;
+}
+
+const isLogged = Astro.cookies.has("isLogged");
+
+if (!isLogged) {
+  return Astro.redirect("/admin/login");
+}
+
+const { header, title, description, keywords } = Astro.props;
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main class="pt-20 pb-12 bg-primary grid place-items-center h-svh w-full">
+    <div
+      class="p-4 min-[1000px]:rounded-md w-full max-w-[1000px] min-h-[80vh] bg-white"
+    >
+      <header
+        class="flex md:items-center md:flex-row flex-col w-full justify-between border-b border-gray-300 pb-2"
+      >
+        <h1 class="text-5xl rubik py-4 text-center">{header}</h1>
+        <nav class="flex items-center justify-center">
+          <a
+            href="/admin/admin-reserves"
+            class="border-1 border border-primary rounded-md text-primary text-lg mx-5 hover:bg-primary px-4 py-2 hover:text-white rubik transition-colors duration-300"
+          >
+            Reservas
+          </a>
+          <a
+            href="/admin/menu"
+            class="border-1 border border-primary rounded-md text-primary text-lg mx-5 hover:bg-primary px-4 py-2 hover:text-white rubik transition-colors duration-300"
+          >
+            Menu
+          </a>
+        </nav>
+      </header>
+      <slot />
+    </div>
+  </main>
+</Layout>
