@@ -20,7 +20,7 @@ export default function ReservasSection() {
 
   return (
     <div
-      className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2 pt-2 h-full overflow-y-auto"
+      className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2 pt-2 overflow-y-auto h-full"
     >
       {reserves ? reserves.map(reserve => <Reserva setReserves={setReserves} reserva={reserve} key={reserve.id} />) :
         <div className="w-full top-0 right-0 absolute h-full grid place-items-center">

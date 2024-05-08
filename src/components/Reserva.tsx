@@ -31,7 +31,7 @@ export default function Reserva({ reserva, setReserves }: Props) {
 
   return (
     <div
-      className="w-full rounded-md border border-solid border-gray-200 px-2 py-1 flex flex-col gap-y-2"
+      className="w-full rounded-md border border-solid border-gray-200 px-2 py-1 flex flex-col gap-y-2 h-max"
     >
       <div className="flex justify-between">
         <h2 className="font-medium">
