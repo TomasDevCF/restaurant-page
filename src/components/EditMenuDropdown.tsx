@@ -1,12 +1,13 @@
 import { useState } from "react"
 
 interface Props {
+  textButton: string
   className: string
   children: React.ReactNode
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-export default function EditMenuDropdown({ className, children, onSubmit }: Props) {
+export default function EditMenuDropdown({ className, children, onSubmit, textButton }: Props) {
   const [isActive, setIsActive] = useState<boolean>(false)
 
   return (
@@ -15,7 +16,7 @@ export default function EditMenuDropdown({ className, children, onSubmit }: Prop
         {children}
       </form>}
       <button onClick={() => setIsActive(!isActive)} className={`${className} text-white text-xl w-full py-2 rounded-md`}>
-        Crear nueva categoria
+        {textButton}
       </button>
     </div>
   )

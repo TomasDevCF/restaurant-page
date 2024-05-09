@@ -21,7 +21,7 @@ export default function Reserva({ reserva, setReserves }: Props) {
 
   function deleteReserve() {
     fetch(`/api/${reserva.id}`, { method: "DELETE" })
-      .then(res => {
+      .then(_ => {
         setReserves(prev => {
           return (prev as ReserveInterface[]).filter((r) => r.id !== reserva.id)
         })

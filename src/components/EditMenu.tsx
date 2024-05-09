@@ -38,14 +38,14 @@ export default function EditMenu() {
 
   return (
     <div className="hidden md:grid grid-cols-2 gap-x-4 relative">
-      {categories && <><EditMenuDropdown onSubmit={createCategory} className="bg-green-500" >
+      {categories && <><EditMenuDropdown textButton="Crear nueva categoría" onSubmit={createCategory} className="bg-green-500" >
         <label htmlFor="category_name" className="text-start text-black">Ingrese el nombre de la categoría</label>
         <div className="flex gap-x-2 text-sm">
           <input required type="text" name="category_name" className="border border-solid border-gray-300 rounded-md w-full px-2 py-1" />
           <button type="submit" className="bg-primary px-2 py-1 text-white  rounded-md">Crear</button>
         </div>
       </EditMenuDropdown>
-        <EditMenuDropdown onSubmit={createFood} className="bg-blue-500" >
+        <EditMenuDropdown onSubmit={createFood} textButton="Crear nueva comida" className="bg-blue-500" >
           <label htmlFor="category" className="text-start text-black text-sm">Categoria de la comida</label>
           <select className="border border-solid border-gray-300 rounded-md w-full px-2 py-1" name="category" id="category_select">
             {categories.map(category => <option value={category.id}>{category.name}</option>)}
