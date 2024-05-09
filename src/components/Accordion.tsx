@@ -16,12 +16,12 @@ export default function Accordion({ content, accordionSelected, setAccordionSele
   return (
     <div className="h-max w-full border border-1 border-gray-300 rounded-md p-2 bg-white">
       <div className="title flex justify-between cursor-pointer" onClick={toggleAccordion}>
-        <h3 className="text-lg font-bold">{title}</h3>
+        <h3 className="sm:text-lg text-md font-bold">{title}</h3>
         <button>
           {accordionSelected === title ? <ArrowUp /> : <ArrowDown />}
         </button>
       </div>
-      {accordionSelected === title && <p className="pt-2">{content}</p>}
+      {accordionSelected === title && <p className="pt-2 text-sm md:text-md">{content}</p>}
     </div>
   )
 }

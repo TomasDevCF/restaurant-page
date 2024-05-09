@@ -12,7 +12,7 @@ import Star from "../icons/Star.astro";
 
 <Layout title="Welcome to Astro." description="TODO" keywords="TODO">
   <main
-    class="h-svh w-full relative bg-transparent md:bg-white max-w-[1600px] max-h-[1024px]"
+    class="h-svh w-full relative bg-transparent md:bg-white max-w-[1600px] max-h-[1024px] pt-20"
   >
     <section
       class="w-full flex gap-x-4 lg:px-20 px-5 items-center h-[85%] pt-[70px] z-40 relative bg-transparent"
@@ -21,25 +21,25 @@ import Star from "../icons/Star.astro";
         <p class="md:text-gray-600 flex gap-x-2 text-white">
           <Location /> Raymundo Montenegro 2764, Córdoba
         </p>
-        <h1 class="text-5xl text-black font-medium">
+        <h1 class="sm:text-5xl min-[300px]:text-4xl text-3xl text-black rubik font-medium">
           RESTAURANTE "LOS CABRITOS"
         </h1>
-        <p>
+        <p class="min-[300px]:text-md text-sm">
           En nuestro restaurante cada plato cuenta una historia y cada sabor
           lleva el alma de la tradición argentina. En un ambiente rustico y
           acogedor, te invitamos a degustar una selección de platos preparados
           con los ingredientes más frescos y una pasión que se siente en cada
           bocado. Desde nuestras hamburguesas caseras hasta el asado más jugoso
         </p>
-        <nav class="flex gap-x-4">
+        <nav class="flex gap-4 sm:flex-row flex-col">
           <a
             href="/reservar"
-            class="text-white border-white border border-solid px-4 py-2 rounded-md hover:bg-white hover:text-primary transition-colors"
+            class="text-primary border-white border border-solid px-4 py-2 rounded-md hover:bg-white hover:text-primary transition-colors text-center md:bg-transparent bg-white md:text-white"
             >Reserva tu mesa</a
           >
           <a
             href="/menu"
-            class="text-white px-4 py-2 rounded-md hover:text-white/80 transition-colors"
+            class="text-white px-4 py-2 rounded-md hover:text-white/80 md:border-0 border border-solid border-white transition-colors text-center"
             >Revisa nuestro menu</a
           >
         </nav>

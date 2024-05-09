@@ -13,14 +13,12 @@ const category_menu = await db
   .select()
   .from(Menu)
   .where(eq(Menu.category_id, category_id));
-
-console.log(category_menu);
 ---
 
 <div class="flex flex-col w-full relative">
   <div id={category_name} class="w-full h-full absolute -top-24"></div>
-  <h2 class="text-3xl font-normal rubik">{category_name}</h2>
-  <ul class="w-full flex flex-col justify-between h-full gap-y-2">
+  <h2 class="text-3xl font-normal rubik bg-primary p-2">{category_name}</h2>
+  <ul class="w-full flex flex-col justify-between h-max gap-y-4 pt-2">
     {
       category_menu.map((menu) => (
         <li class="flex justify-between w-full">
