@@ -1,6 +1,5 @@
-import { Menu, db } from 'astro:db';
+import { Categorias, db } from 'astro:db';
 import type { APIRoute } from "astro";
-import { Categorias } from 'astro:db';
 
 export const GET: APIRoute = async ({params, request}) => {
   const response = await db.select().from(Categorias)

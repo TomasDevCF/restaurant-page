@@ -4,7 +4,6 @@ import Layout from "./Layout.astro";
 interface Props {
   header: string;
   title: string;
-  description: string;
   keywords: string;
 }
 
@@ -14,10 +13,10 @@ if (!isLogged) {
   return Astro.redirect("/admin/login");
 }
 
-const { header, title, description, keywords } = Astro.props;
+const { header, title, keywords } = Astro.props;
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} keywords={keywords}>
   <main class="pt-20 pb-12 bg-primary grid place-items-center h-svh w-full">
     <div
       class="p-4 min-[1100px]:rounded-md w-full max-w-[1100px] h-full max-h-[80vh] bg-white overflow-y-hidden flex flex-col"

@@ -6,7 +6,10 @@ import { db, Categorias } from "astro:db";
 const categorias = await db.select().from(Categorias);
 ---
 
-<Layout description="TODO" title="TODO" keywords="TODO">
+<Layout
+  title=`Nuestro menu | Los Cabritos`
+  keywords="Menu, Restaurantes en Cordoba, Los Cabritos"
+>
   <main class="pt-28 pb-12 bg-primary grid place-items-center w-full">
     <div class="md:p-4 p-2 rounded-md max-w-[1200px] w-full bg-white">
       <h1 class="sm:text-5xl text-4xl rubik py-4 text-center">

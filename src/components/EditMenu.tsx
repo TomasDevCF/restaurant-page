@@ -20,7 +20,7 @@ export default function EditMenu() {
       method: "POST",
       body: formData,
     }).then(res => res.json())
-      .then(r => window.location.reload())
+      .then(_ => window.location.reload())
       .catch(err => console.error(err))
   }
 
@@ -32,7 +32,7 @@ export default function EditMenu() {
       method: "POST",
       body: formData,
     }).then(res => res.json())
-      .then(r => window.location.reload())
+      .then(_ => window.location.reload())
       .catch(err => console.error(err))
   }
 

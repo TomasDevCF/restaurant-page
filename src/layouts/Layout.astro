@@ -5,18 +5,38 @@ import Header from "../components/Header.astro";
 
 interface Props {
   title: string;
-  description: string;
   keywords: string;
 }
 
-const { title, description, keywords } = Astro.props;
+const { title, keywords } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es" class="bg-primary">
   <head>
+    <meta property="”og:title”" content={title} />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content="/favicon.svg" />
+
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content=`Reserva tu mesa en nuestro Restaurante en Cordoba "Los Cabritos", donde encuentras comida de calidad, compromiso con la excelencia y un ambiente acogedor y familiar. Reserva una mesa y revisa nuestro menu.`
+    />
+    <meta name=`twitter:url` content={Astro.url.href} />
+    <meta name="twitter:image" content="/favicon.svg" />
+
+    <meta
+      property="”og:description”"
+      content=`Reserva tu mesa en nuestro Restaurante en Cordoba "Los Cabritos", donde encuentras comida de calidad, compromiso con la excelencia y un ambiente acogedor y familiar. Reserva una mesa y revisa nuestro menu.`
+    />
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta
+      name="description"
+      content=`Reserva tu mesa en nuestro Restaurante en Cordoba "Los Cabritos", donde encuentras comida de calidad, compromiso con la excelencia y un ambiente acogedor y familiar. Reserva una mesa y revisa nuestro menu.`
+    />
     <meta name="keywords" content={keywords} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,12 +44,18 @@ const { title, description, keywords } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="canonical" href={Astro.url.href} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index,follow" /><link
+      rel="sitemap"
+      href="/sitemap-index.xml"
+    />
     <title>{title}</title>
     <ViewTransitions />
   </head>
+
   <body class="grid place-items-center w-full">
     <Header />
     <slot />
@@ -48,7 +74,8 @@ const { title, description, keywords } = Astro.props;
         max-width: 1600px;
       }
 
-      body > header, body > footer {
+      body > header,
+      body > footer {
         max-width: none !important;
       }
 

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/menu
+Disallow: /admin/admin-reserves
+
+Sitemap: https://loscabritos.vercel.app/sitemap-index.xml

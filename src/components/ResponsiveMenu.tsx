@@ -19,17 +19,17 @@ export default function ResponsiveMenu() {
           <ul className="flex flex-col gap-y-2">
             <a
               href="/"
-              className="text-black rubik text-xl mx-5 hover:text-primary transition-colors"
+              className="text-center text-black rubik text-xl mx-5 hover:text-primary transition-colors"
             >Inicio</a
             >
             <a
               href="/menu"
-              className="text-black rubik text-xl mx-5 hover:text-primary transition-colors"
+              className="text-center text-black rubik text-xl mx-5 hover:text-primary transition-colors"
             >Menu</a
             >
             <a
               href="/reservar"
-              className="border-1 border border-black rounded-md text-black text-xl mx-5 hover:border-primary px-4 py-2 hover:text-primary rubik transition-colors duration-300"
+              className="border-1 border text-center border-black rounded-md text-black text-xl mx-5 hover:border-primary px-4 py-2 hover:text-primary rubik transition-colors duration-300"
             >
               Reservar mesa
             </a>

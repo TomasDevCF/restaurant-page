@@ -5,6 +5,7 @@ import { column, defineDb, defineTable } from 'astro:db';
 const Reservas = defineTable({
   columns: {
     id: column.text({primaryKey: true}),
+    email: column.text(),
     people: column.number(),
     hour: column.text(),
     date: column.text()

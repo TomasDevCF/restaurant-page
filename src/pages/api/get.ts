@@ -1,8 +1,9 @@
 import type { APIRoute } from "astro";
-import { Reservas, eq } from "astro:db";
-import { asc, db } from "astro:db";
+import { Reservas, eq, sql, asc, db} from "astro:db";
 
-export const GET: APIRoute = async ({params, request}) => {
+export const GET: APIRoute = async () => {
+  await db.run(sql`DELETE FROM Reservas WHERE date < ${new Date()}`)
+
   const response = await db
   .select()
   .from(Reservas)

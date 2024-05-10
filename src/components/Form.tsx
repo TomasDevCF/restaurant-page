@@ -4,7 +4,8 @@ import RadioCard from "./RadioCard";
 export default function Form() {
 
   const [message, setMessage] = useState<null | string>(null)
-  const [now, setNow] = useState(getDate())
+  const [errorMessage, setErrorMessage] = useState<null | string>(null)
+  const [now, _] = useState(getDate())
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -13,8 +14,13 @@ export default function Form() {
       method: "POST",
       body: formData,
     }).then(res => res.json())
-      .then(r => setMessage(r.message))
-      .catch(err => console.error(err))
+      .then(r => {
+        if (r.message === "Datos insertados correctamente.") {
+          setMessage(r.message)
+        } else {
+          setErrorMessage(r.message)
+        }
+      })
   }
 
   function getDate() {
@@ -23,10 +29,16 @@ export default function Form() {
     return date.toISOString().split("T")[0]
   }
 
+  function resetMessages() {
+    setMessage(null)
+    setErrorMessage(null)
+  }
+
   return (
     <form className="w-full min-h-[600px] gap-8 flex flex-col relative z-40 items-center justify-center" onSubmit={handleSubmit}>
       <div className="w-full max-w-[700px] shadow-2xl bg-white md:rounded-md p-4">
         <h1 className="text-4xl pb-8 rubik">Reserva tu mesa</h1>
+
         <h2 className="pb-2 text-lg">Numero de personas</h2>
         <div className="sm:px-4 grid grid-cols-5 gap-x-2 sm:gap-x-4">
           <RadioCard title="1" />
@@ -35,8 +47,10 @@ export default function Form() {
           <RadioCard title="4" />
           <RadioCard title="5" />
         </div>
+        <h2 className="pb-2 pt-6 text-lg">Email</h2>
+        <input onChange={resetMessages} required type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" />
         <h2 className="text-lg pb-2 pt-6">Horario de reserva</h2>
-        <select required name="hour" id="hour" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" aria-placeholder="Selecciona una opcion">
+        <select onChange={resetMessages} required name="hour" id="hour" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" aria-placeholder="Selecciona una opcion">
           <option value="10:30">10:30</option>
           <option value="11:00">11:00</option>
           <option value="11:30">11:30</option>
@@ -68,10 +82,11 @@ export default function Form() {
         </select>
         <h2 className="text-lg pb-2 pt-6">Fecha de reserva</h2>
 
-        <input required type="date" min={now} name="day" id="day" className="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5" />
+        <input onChange={resetMessages} required type="date" min={now} name="day" id="day" className="w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5" />
 
         <button type="submit" className="text-white bg-primary hover:bg-primary/80 focus:ring-4 focus:outline-none focus:ring-primary/80 font-medium rounded-lg px-5 py-2.5 text-center mt-6 text-md">Reservar ahora</button>
         {message && <p className="text-green-500 pt-2">{message}</p>}
+        {errorMessage && <p className="text-red-500 pt-2">{errorMessage}</p>}
       </div>
     </form>
   )
