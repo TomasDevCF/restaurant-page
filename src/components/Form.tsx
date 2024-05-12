@@ -7,9 +7,18 @@ export default function Form() {
   const [errorMessage, setErrorMessage] = useState<null | string>(null)
   const [now, _] = useState(getDate())
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    resetMessages()
     const formData = new FormData(e.target as HTMLFormElement)
+    const email = formData.get("email") as string
+
+    if (!(await validateEmail(email))) {
+      setMessage(null)
+      setErrorMessage("El email no es valido")
+      return
+    }
+
     fetch("/api/post", {
       method: "POST",
       body: formData,
@@ -32,6 +41,16 @@ export default function Form() {
   function resetMessages() {
     setMessage(null)
     setErrorMessage(null)
+  }
+
+  async function validateEmail(email: string) {
+    try {
+      const res = await fetch(`https://api.hunter.io/v2/email-verifier?email=${email}&api_key=4a028959c2702ca9fe8a4b7bcd098d4014d2d356`)
+      const data = await res.json()
+      return data.data.status === "valid"
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (

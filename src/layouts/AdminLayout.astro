@@ -7,9 +7,9 @@ interface Props {
   keywords: string;
 }
 
-const isLogged = Astro.cookies.has("isLogged");
+const isLogged = Astro.cookies.get("isLogged");
 
-if (!isLogged) {
+if (!isLogged || !isLogged.boolean()) {
   return Astro.redirect("/admin/login");
 }
 
@@ -26,6 +26,14 @@ const { header, title, keywords } = Astro.props;
       >
         <h1 class="md:text-5xl text-3xl rubik py-4 text-center">{header}</h1>
         <nav class="flex items-center justify-center">
+          <form
+            method="POST"
+            class="border-1 border border-red-500 rounded-md text-red-500 text-lg mx-5 hover:bg-red-500 hover:text-white rubik transition-colors duration-300 cursor-pointer"
+          >
+            <button type="submit" class="w-full h-full px-4 py-2"
+              >Cerrar sesion</button
+            >
+          </form>
           <a
             href="/admin/admin-reserves"
             class="border-1 border border-primary rounded-md text-primary text-lg mx-5 hover:bg-primary px-4 py-2 hover:text-white rubik transition-colors duration-300"
