@@ -15,7 +15,7 @@ const categorias = await db.select().from(Categorias);
       <h1 class="sm:text-5xl text-4xl rubik py-4 text-center">
         Menu de "Los Cabritos"
       </h1>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:px-8 px-4">
+      <div class="grid grid-cols-1 gap-8 lg:px-8 px-4">
         {
           categorias.map((categoria) => (
             <MenuList
